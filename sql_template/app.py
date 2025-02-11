@@ -1,11 +1,14 @@
+from flask import Flask
+from flask import render_template
+from flask import request
 import sqlite3
 
-# Function to connect to the SQLite database
+# connect to our SQLite database
 def get_db_connection():
     conn = sqlite3.connect('students.db')  # This will create a new file called students.db
     return conn
 
-# Function to initialize the database
+# initialise the database
 def init_db():
     conn = get_db_connection()
     cursor = conn.cursor()
@@ -20,7 +23,7 @@ def init_db():
     conn.commit()
     conn.close()
 
-# Function to add a student to the database
+# add a student to the database
 def add_student(name, age, grade):
     conn = get_db_connection()
     cursor = conn.cursor()
@@ -32,7 +35,7 @@ def add_student(name, age, grade):
     conn.close()
     print(f"Student {name} added successfully!")
 
-# Function to view all students in the database
+# view all students in the database
 def view_students():
     conn = get_db_connection()
     cursor = conn.cursor()
@@ -47,9 +50,9 @@ def view_students():
     else:
         print("No students found.")
 
-# Main function to handle user interaction
+# handle user interaction
 def main():
-    init_db()  # Initialize the database (create table if not exists)
+    init_db()  # Initialise the database (create table if not exists)
     
     while True:
         print("\nStudent Database")
