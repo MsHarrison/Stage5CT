@@ -1,6 +1,3 @@
-from flask import Flask
-from flask import render_template
-from flask import request
 import sqlite3
 
 # connect to our SQLite database
